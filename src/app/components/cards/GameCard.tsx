@@ -4,10 +4,11 @@ interface GameCardProps {
   title: string;
   image: string;
   isNew?: boolean;
+  isTop?: boolean;
   jackpot?: string;
 }
 
-export default function GameCard({ title, image, isNew, jackpot }: GameCardProps) {
+export default function GameCard({ title, image, isNew, isTop, jackpot }: GameCardProps) {
   return (
     <div className="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group">
       {/* Jackpot Badge */}
@@ -17,12 +18,22 @@ export default function GameCard({ title, image, isNew, jackpot }: GameCardProps
         </div>
       )}
 
-      {/* NEW Ribbon */}
-      {isNew && (
-        <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-bl">
-          NEW
+      {/* NEW + TOP Ribbons */}
+      {(isNew || isTop) && (
+        <div className="absolute top-0 right-0 flex">
+          {isNew && (
+            <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-bl mr-2">
+              NEW
+            </div>
+          )}
+          {isTop && (
+            <div className="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-bl">
+              TOP
+            </div>
+          )}
         </div>
       )}
+
 
       {/* Image */}
       <Image

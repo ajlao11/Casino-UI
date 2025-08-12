@@ -42,6 +42,7 @@ export default function Home() {
             title={game.name}
             image={`https:${game.image}`}
             isNew={game.categories.includes("new")}
+            isTop={game.categories.includes("top")}
             jackpot={getJackpot(game.id)}
           />
         ))}
